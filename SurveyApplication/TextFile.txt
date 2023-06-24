@@ -1,0 +1,1214 @@
+﻿
+<div class="d-flex" style="justify-content:flex-start;flex-wrap:wrap;padding-top:1.5rem">
+                                                            @foreach (var str in Model.SurveyImages)
+                                                            {
+                                                                @if (str.SurveyNumber == Model.SiteSurveys[i].SurveyNumber)
+                                                            {
+
+                                                                    <div class="card">
+                                                                        <div class="survey-image-container">
+                                                                            <img src="@str.FilePath" alt="" class="survey-image">
+                                                                            <div class="overlay">
+                                                                                <a href="#" class="icon-outer" title="">
+
+
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                                                                                        <path d="M7 11l5 5l5 -5"></path>
+                                                                                        <path d="M12 4l0 12"></path>
+                                                                                    </svg>
+
+                                                                                </a>
+                                                                                <a href="#" class="icon-outer" title="">
+
+
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                                        <path d="M4 7l16 0"></path>
+                                                                                        <path d="M10 11l0 6"></path>
+                                                                                        <path d="M14 11l0 6"></path>
+                                                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                                                                    </svg>
+
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-body p-1">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="text-muted">
+                                                                                    @str.Name
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                
+
+                                                               <!--
+                                                                         <div style="height:80px!important;width:80px!important;">
+                                                                         <div class="img-responsive img-responsive-1x1 rounded-3 border" style="background-image: url(@str.FilePath)"></div>
+
+                                                                     </div>
+
+
+
+                                                                          <div class="card card-sm" style="height:10rempx;width:10rem;">
+                                                                         <a href="#" class="d-block"><img src="@str.FilePath" class="card-img-top"></a>
+                                                                         <div class="card-body">
+                                                                         <div class="d-flex align-items-center">
+
+                                                                             <div class="ms-auto">
+                                                                             <a href="#" class="text-muted">
+                                                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                                                                                    <path d="M7 11l5 5l5 -5"></path>
+                                                                                    <path d="M12 4l0 12"></path>
+                                                                                 </svg>
+                                                                             </a>
+                                                                             <a href="#" class="ms-3 text-muted">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                                    <path d="M4 7l16 0"></path>
+                                                                                    <path d="M10 11l0 6"></path>
+                                                                                    <path d="M14 11l0 6"></path>
+                                                                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                                                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                                                                 </svg>
+                                                                                                                                                         </a>
+                                                                             </div>
+                                                                         </div>
+                                                                         </div>
+                                                                     </div>
+                                                               -->
+                                                            }
+                                                        }
+                                                        </div>
+
+
+
+
+ <div class="d-flex align-items-center">
+                                                                                <div class="text-muted">
+                                                                                    @str.Name
+                                                                                </div>
+                                                                            </div>
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+ <div id="edit-project-site" style="display:none;">
+                                
+                                
+                                <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path><path d="M3 6l0 13"></path><path d="M12 6l0 13"></path><path d="M21 6l0 13"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.ProjectID" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.Customer" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.Location" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.PM_Name" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.PM_Email" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                 <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.PM_Phone" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                 <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.SiteContact_Name" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                 <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.SiteContact_Email" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                 <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.SiteContact_Phone" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                 <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.SurveyDate" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                 <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.Surveyor_Name" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                 <div class="mb-2">
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.Surveyor_Company" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="input-icon mb-3">
+                                        <span class="input-icon-addon">
+                                            <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                        </span>
+                                        <input asp-for="ProjectSite.Customer" class="form-control" placeholder="Project ID" />
+                                    </div>
+                                </div>
+                                <input type="hidden" asp-for="ProjectSite.CreatedBy" value="@User.Identity.Name" />
+                                <input type="hidden" asp-for="ProjectSite.LastModifiedBy" value="@User.Identity.Name" />
+                                <input type="hidden" asp-for="ProjectSite.LastModified" value="@DateTime.Now" />
+                                <input type="hidden" asp-for="ProjectSite.Id" />
+
+
+
+                              <div class="">
+                                  <button type="submit" class="btn btn-secondary" style="font-size:.8rem;">
+                                Save
+                            </button>
+                              </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<form method="post" class="dropzone dz-clickable" id="dropzoneCustom" asp-page-handler="UploadPhotos" autocomplete="off" novalidate="">
+
+<div class="modal modal-blur fade" id="modal-simple" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="image-upload-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          
+            <div class="modal-body">
+            
+                    <div class="card">
+                        <div class="card-body">
+                            
+
+                                <div class="dz-message">
+                                    <h3 class="dropzone-msg-title">Upload Survey Photos</h3>
+                                    <span class="dropzone-msg-desc">Click here to select images to upload</span>
+                                    
+                                </div>
+                                <input type="hidden" asp-for="SurveyNum" id="upload-photos-surveynumber" value="" />
+
+                           
+                        </div>
+                    </div>
+      
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" >Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+         </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                        <input type="file" asp-for="@Model.Files" multiple />
+
+
+
+
+
+
+        <script>
+            Dropzone.options.dropzoneForm = {
+                addRemoveLinks: true,
+                paramName: "files", //default param name is "file", make it "files" so it matches parameter name in the method
+                //resizeWidth: 800,
+                //resizeHeight: 600,
+                //resizeMethod: 'contain',
+                //resizeQuality: 1,
+                init: function () {
+                    var myDropzone = this;
+                    $.getJSON('./?handler=ListFolderContents').done(function (data) {
+                        //Call the action method to load the images from the server
+                        if (data !== null && data.length > 0) {
+                            $.each(data, function (index, item) {
+                                //// Create the mock file:
+                                var mockFile = {
+                                    name: item.name,
+                                    size: item.fileSize,
+                                    filePath: item.filePath
+                                };
+                                // Call the default addedfile event handler
+                                myDropzone.emit("addedfile", mockFile);
+                                // And optionally show the thumbnail of the file:
+                                myDropzone.emit("thumbnail", mockFile, item.filePath);
+                                // Make sure there is no progress bar ober tha image
+                                myDropzone.emit("complete", mockFile);
+                            });
+                        }
+                    });
+                    myDropzone.on("addedfile", function (file) {
+                        var downloadBtn = Dropzone.createElement("<a class='dz-download' style='visibility:hidden' href='#downloadModal' data-file-name='" + file.name + "' data-toggle='modal' data-file-size='" + file.size + "' data-img-url='" + file.filePath + "'><i class='fas fa-download text-success'></i></a>");
+                        file.previewElement.appendChild(downloadBtn);
+                        file.previewElement.addEventListener("click", function () {
+                            downloadBtn.click();
+                        });
+                    });
+                },
+                removedfile: function removedfile(file) {
+                    $.getJSON("./?handler=DeleteFile&file=" + file.name).done(function (result) {
+                        console.log("delete: " + result);
+                        if (result === true) {
+                            if (file.previewElement != null && file.previewElement.parentNode != null) {
+                                file.previewElement.parentNode.removeChild(file.previewElement);
+                            }
+                        }
+                    });
+                },
+            };
+
+        </script>
+  
+
+
+
+
+  <div class="dropzone" id="dropzoneForm"  enctype="multipart/form-data">
+                                                        <div class="fallback">
+                                                            <input type="file" name="files" multiple />
+                                                            <input type="submit" value="Upload" asp-page-handler="UploadPhotos" asp-route-id="@Model.Id" />
+                                                           
+                                                            
+                                                            </div>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
+ <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New report</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post">
+                    <div class="modal-body">
+                        <div class="row row-cards">
+
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.ProjectID"></label>
+                                    <input asp-for="ProjectSite.ProjectID" class="form-control" placeholder="Project ID" />
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.Customer"></label>
+                                    <input asp-for="ProjectSite.Customer" class="form-control" placeholder="Project ID" />
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.PM_Name"></label>
+                                    <input asp-for="ProjectSite.PM_Name" class="form-control" placeholder="PM Name" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.PM_Phone"></label>
+                                    <input asp-for="ProjectSite.PM_Phone" class="form-control" placeholder="Phone" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.PM_Email"></label>
+                                    <input asp-for="ProjectSite.PM_Email" class="form-control" placeholder="Email" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.Location"></label>
+                                    <input asp-for="ProjectSite.Location" class="form-control" placeholder="Site Location" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-5">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.SiteContact_Name"></label>
+                                    <input asp-for="ProjectSite.SiteContact_Name" class="form-control" placeholder="Name" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.SiteContact_Phone"></label>
+                                    <input asp-for="ProjectSite.SiteContact_Phone" class="form-control" placeholder="Phone" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.SiteContact_Email"></label>
+                                    <input asp-for="ProjectSite.SiteContact_Email" class="form-control" placeholder="Email" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.SurveyDate"></label>
+
+                                    <input asp-for="ProjectSite.SurveyDate" class="form-control" placeholder="Select a date" />
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-5">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.Surveyor_Name"></label>
+                                    <input asp-for="ProjectSite.Surveyor_Name" class="form-control" placeholder="Name" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="ProjectSite.Surveyor_Company"></label>
+                                    <input asp-for="ProjectSite.Surveyor_Company" class="form-control" />
+                                </div>
+                            </div>
+                            <input type="hidden" asp-for="ProjectSite.CreatedBy" value="@User.Identity.Name" />
+                            <input type="hidden" asp-for="ProjectSite.LastModifiedBy" value="@User.Identity.Name" />
+                            <input type="hidden" asp-for="ProjectSite.LastModified" value="@DateTime.Now" />
+                            <input type="hidden" asp-for="ProjectSite.Id" />
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </a>
+                        <input type="submit" class="btn btn-primary ms-auto">
+
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+@page "{handler?}"
+@model IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+@using Microsoft.AspNetCore.Mvc;
+
+@if (User.Identity.IsAuthenticated)
+{
+
+
+	<div class="page-header d-print-none">
+		<div class="container-xl">
+			<div class="row g-2 align-items-center">
+				<div class="col">
+					<!-- Page pre-title -->
+
+					<h2 class="page-title">
+						Site Survey Application
+					</h2>
+				</div>
+				<!-- Page title actions -->
+				<div class="col-auto ms-auto d-print-none">
+					<div class="btn-list">
+
+						<a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+							<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+							Create New Survey
+						</a>
+						<a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
+							<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Page body -->
+	<div class="page-body">
+		<div class="container-xl d-flex flex-column justify-content-center">
+			<div class="empty">
+				<div class="empty-img">
+					<img src="./static/illustrations/undraw_printing_invoices_5r4r.svg" height="128" alt="">
+				</div>
+				<p class="empty-title">No results found</p>
+				<p class="empty-subtitle text-muted">
+					Try adjusting your search or filter to find what you're looking for.
+				</p>
+				@*
+			<div class="empty-action">
+			<a href="./." class="btn btn-primary">
+			<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+			<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5l0 14"></path><path d="M5 12l14 0"></path></svg>
+			Add your first client
+			</a>
+			</div>
+			*@
+			
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Links and buttons</h3>
+						</div>
+						<a class="btn btn-primary" asp-page="./Sites/Index">Site Surveys</a>
+
+						<div class="list-group list-group-flush">
+							@foreach (var site in Model.ProjectSites)
+							{
+
+								<a asp-page="./CreateSiteSurvey" asp-route-id="@site.Id" class="list-group-item list-group-item-action">@site.ProjectID</a>
+
+							}
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+
+					<div class="card" id="table-projects">
+						<div class="card-header">
+							<h3 class="card-title">Project Sites</h3>
+						</div>
+						<div class="card-body border-bottom py-3">
+							<div class="d-flex">
+								<div class="text-muted">
+									Show
+									<div class="mx-2 d-inline-block">
+										<!--										<input type="text" class="form-control form-control-sm" id="show-projects-input" value="2" size="3" onchange="updateProjectTable(document.getElementById('show-projects-input').value, @Model.ProjectSites.Count)">
+										-->
+										<select class="form-control" name="state" id="maxRows">
+											<option value="5000">Show ALL Rows</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+										</select>
+									</div>
+									entries
+								</div>
+								<div class="ms-auto text-muted">
+									Search:
+									<div class="ms-2 d-inline-block">
+										<input type="text" class="form-control form-control-sm search" placeholder="Search Projects">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="table-responsive">
+							<table class="table card-table table-vcenter text-nowrap datatable" id="Tabla">
+								<thead>
+									<tr>
+										<th class="w-1">
+											<button class="table-sort sort" data-sort="sort-project">Project ID</button>
+										</th>
+										<th>
+											<button class="table-sort sort" data-sort="sort-customer">Customer</button>
+										</th>
+										<th>
+											<button class="table-sort sort" data-sort="sort-pm">PM</button>
+										</th>
+										<th>
+											<button class="table-sort sort" data-sort="sort-siteContact">Site Contact</button>
+
+										</th>
+										<th>
+											<button class="table-sort sort" data-sort="sort-dateCreated">Created</button>
+										</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody class="list">
+									@foreach (var projSite in Model.ProjectSites)
+									{
+
+
+										<tr>
+											<td class="sort-project"><span class="text-reset">@projSite.ProjectID</span></td>
+											<td class="sort-customer">@projSite.Customer</td>
+											<td class="sort-pm">@projSite.PM_Name</td>
+											<td class="sort-siteContact">
+												<div class="row align-items-center">
+													<div class="col-auto">
+														<span class="bg-red text-white avatar">
+															<!-- Download SVG icon from http://tabler-icons.io/i/user -->
+															<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path></svg>
+														</span>
+													</div>
+													<div class="col">
+														<div class="font-weight-medium">
+															@projSite.SiteContact_Name
+														</div>
+														<div class="text-muted">
+															@{
+																if (projSite.SiteContact_Email == "" || projSite.SiteContact_Email == null)
+																{
+																	@projSite.SiteContact_Phone
+																}
+																else
+																{
+																	@projSite.SiteContact_Email
+																}
+															}
+															
+															
+														</div>
+													</div>
+												</div>
+											</td>
+											<td class="text-nowrap text-muted sort-dateCreated" data-date="@projSite.DateCreated">
+												<!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+												<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
+												@projSite.DateCreated
+											</td>
+											<td class="text-end">
+												<div class="btn-list flex-nowrap">
+													<a class="btn" asp-page="./CreateSiteSurvey" asp-route-id="@projSite.Id">
+														Edit
+													</a>
+													<div class="dropdown">
+														<button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">
+															Actions
+														</button>
+														<div class="dropdown-menu dropdown-menu-end">
+															<a class="dropdown-item" href="#">
+																Action
+															</a>
+															<a class="dropdown-item" href="#">
+																Another action
+															</a>
+														</div>
+													</div>
+												</div>
+
+											</td>
+										</tr>
+									}
+
+								</tbody>
+							</table>
+						</div>
+						<div class="card-footer d-flex align-items-center">
+							<p class="m-0 text-muted">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
+							<ul class="pagination"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">New report</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+
+				<form method="post">
+					<div class="modal-body">
+						<div class="row row-cards">
+							<div class="col-md-4">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.ProjectID"></label>
+									<input asp-for="NewProjectSite.ProjectID" class="form-control" placeholder="Project ID" />
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.Customer"></label>
+									<input asp-for="NewProjectSite.Customer" class="form-control" placeholder="Project ID" />
+								</div>
+							</div>
+							<div class="col-md-5">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.PM_Name"></label>
+									<input asp-for="NewProjectSite.PM_Name" class="form-control" placeholder="PM Name" />
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.PM_Phone"></label>
+									<input asp-for="NewProjectSite.PM_Phone" class="form-control" placeholder="Phone" />
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-4">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.PM_Email"></label>
+									<input asp-for="NewProjectSite.PM_Email" class="form-control" placeholder="Email" />
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.Location"></label>
+									<input asp-for="NewProjectSite.Location" class="form-control" placeholder="Site Location" />
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-5">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.SiteContact_Name"></label>
+									<input asp-for="NewProjectSite.SiteContact_Name" class="form-control" placeholder="Name" />
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.SiteContact_Phone"></label>
+									<input asp-for="NewProjectSite.SiteContact_Phone" class="form-control" placeholder="Phone" />
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-4">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.SiteContact_Email"></label>
+									<input asp-for="NewProjectSite.SiteContact_Email" class="form-control" placeholder="Email" />
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.SurveyDate"></label>
+
+									<input asp-for="NewProjectSite.SurveyDate" class="form-control" placeholder="Select a date" />
+
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-5">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.Surveyor_Name"></label>
+									<input asp-for="NewProjectSite.Surveyor_Name" class="form-control" placeholder="Name" />
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-4">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.Surveyor_Company"></label>
+									<input asp-for="NewProjectSite.Surveyor_Company" class="form-control" />
+								</div>
+							</div>
+
+							<input type="hidden" asp-for="NewProjectSite.LastModifiedBy" value="@User.Identity.Name" />
+
+							<input type="hidden" asp-for="NewProjectSite.CreatedBy" value="@User.Identity.Name" />
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+							Cancel
+						</a>
+						<input type="submit" class="btn btn-primary ms-auto">
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+}
+   var options = {
+                valueNames: ['sort-project', 'sort-customer', 'sort-pm', 'sort-siteContact',
+                        { attr: 'data-date', name: 'sort-dateCreated' } ]
+                        
+            };
+
+            var userList = new List('table-projects', options);
+
+            function updateProjectTable(num, total)
+            {
+                var p = (total / num) + 1;
+                var options = {
+                    valueNames: ['sort-project', 'sort-customer', 'sort-pm', 'sort-siteContact',
+                        { attr: 'data-date', name: 'sort-dateCreated' }],
+                        page: p,
+                    pagination: true
+                };
+
+                var userList = new List('table-projects', options);
+                
+
+            }
+
+ $(document).ready(function () {
+                getPagination('#Tabla');
+                $('#maxRows option:last').prop('selected', true).trigger('change');
+            });
+
+            function getPagination(table) {
+
+                $('#maxRows').on('change', function (e) {
+                    $('.pagination').html(''); // reset pagination
+                    var trnum = 0; // reset tr counter
+                    var maxRows = parseInt($(this).val()); // get Max Rows from select option
+                    var totalRows = $(table + ' tbody tr').length; // numbers of rows
+                    $(table + ' tr:gt(0)').each(function () { // each TR in  table and not the header
+                        trnum++; // Start Counter
+                        if (trnum > maxRows) { // if tr number gt maxRows
+
+                            $(this).hide(); // fade it out
+                        }
+                        if (trnum <= maxRows) {
+                            $(this).show();
+                        } // else fade in Important in case if it ..
+                    }); //  was fade out to fade it in
+                    if (totalRows > maxRows) { // if tr total rows gt max rows option
+                        var pagenum = Math.ceil(totalRows / maxRows); // ceil total(rows/maxrows) to get ..
+                        //	numbers of pages
+                        for (var i = 1; i <= pagenum;) { // for each page append pagination li
+                            $('.pagination').append('<li class"wp" data-page="' + i + '">\
+            <span>' + i++ + '<span class="sr-only">(current)</span></span>\
+            </li>').show();
+                        } // end for i
+                    } // end if row count > max rows
+                    $('.pagination li:first-child').addClass('active'); // add active class to the first li
+                    $('.pagination li').on('click', function () { // on click each page
+                        var pageNum = $(this).attr('data-page'); // get it's number
+                        var trIndex = 0; // reset tr counter
+                        $('.pagination li').removeClass('active'); // remove active class from all li
+                        $(this).addClass('active'); // add active class to the clicked
+                        $(table + ' tr:gt(0)').each(function () { // each tr in table not the header
+                            trIndex++; // tr index counter
+                            // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+                            if (trIndex > (maxRows * pageNum) || trIndex <= ((maxRows * pageNum) - maxRows)) {
+                                $(this).hide();
+                            } else {
+                                $(this).show();
+                            } //else fade in
+                        }); // end of for each tr in table
+                    }); // end of on click pagination list
+
+
+                });
+
+                // end of on select change
+
+
+
+                // END OF PAGINATION
+            }
+
+
+
+
+
+
+================================================================================================================================================
+
+
+
+@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+@if (User.Identity.IsAuthenticated)
+{
+		
+
+	<div class="page-header d-print-none">
+		<div class="container-xl">
+		<div class="row g-2 align-items-center">
+			<div class="col">
+			<!-- Page pre-title -->
+
+			<h2 class="page-title">
+				Site Survey Application
+			</h2>
+			</div>
+			<!-- Page title actions -->
+			<div class="col-auto ms-auto d-print-none">
+			<div class="btn-list">
+
+				<a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+				<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+				Create New Survey
+				</a>
+				<a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
+				<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+				</a>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<!-- Page body -->
+	<div class="page-body">
+		<div class="container-xl d-flex flex-column justify-content-center">
+			<div class="empty">
+			<div class="empty-img"><img src="./static/illustrations/undraw_printing_invoices_5r4r.svg" height="128" alt="">
+			</div>
+			<p class="empty-title">No results found</p>
+			<p class="empty-subtitle text-muted">
+				Try adjusting your search or filter to find what you're looking for.
+			</p>
+			@*
+			<div class="empty-action">
+			<a href="./." class="btn btn-primary">
+			<!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+			<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5l0 14"></path><path d="M5 12l14 0"></path></svg>
+			Add your first client
+			</a>
+			</div>
+			*@
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Links and buttons</h3>
+						</div>
+						<a class="btn btn-primary" asp-page="./Sites/Index" >Site Surveys</a>
+						
+						<div class="list-group list-group-flush">
+							@foreach (var site in Model.ProjectSites)
+							{
+
+								<a asp-page="./CreateSiteSurvey" asp-route-id="@site.Id" class="list-group-item list-group-item-action">@site.ProjectID</a>
+
+							}
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Project Sites</h3>
+						</div>
+						<div class="card-body border-bottom py-3">
+							<div class="d-flex">
+								<div class="text-muted">
+									Show
+									<div class="mx-2 d-inline-block">
+										<input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
+									</div>
+									entries
+								</div>
+								<div class="ms-auto text-muted">
+									Search:
+									<div class="ms-2 d-inline-block">
+										<input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="table-responsive">
+							<table class="table card-table table-vcenter text-nowrap datatable">
+								<thead>
+									<tr>
+										<th class="w-1">
+												<button class="table-sort" data-sort="sort-name">Project ID</button>
+										</th>
+										<th>
+											<button class="table-sort" data-sort="sort-name">Customer</button>
+										</th>
+										<th>
+												<button class="table-sort" data-sort="sort-name">PM</button>
+										</th>
+										<th>
+											<button class="table-sort" data-sort="sort-name">Site Contact</button>
+											
+										</th>
+										<th>
+											<button class="table-sort" data-sort="sort-name">Created</button>
+										</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var projSite in Model.ProjectSites)
+									{
+										
+										
+										<tr>
+											<td><span class="text-reset">@projSite.ProjectID</span></td>
+											<td>@projSite.Customer</td>
+											<td>@projSite.PM_Name</td>											
+											<td>
+												<div class="row align-items-center">
+												  <div class="col-auto">
+													<span class="bg-red text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
+													  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path></svg>
+													</span>
+												  </div>
+												  <div class="col">
+													<div class="font-weight-medium">
+													  @projSite.SiteContact_Name
+													</div>
+													<div class="text-muted">
+													  if (@projSite.SiteContact_Email == "" || @projSite.SiteContact_Email == null)
+													  {
+														  @projSite.SiteContact_Phone
+													  }
+													  else 
+													  {
+														  @projSite.SiteContact_Email
+													  }
+													</div>
+												  </div>
+												</div>
+											</td>
+											<td class="text-nowrap text-muted">
+											  <!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+											  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
+											  @projSite.DateCreated
+											</td>
+											<td class="text-end">
+												<div class="btn-list flex-nowrap">
+													<a class="btn" asp-page="./CreateSiteSurvey" asp-route-id="@projSite.Id">
+													Edit
+												  </a>
+												  <div class="dropdown">
+													<button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">
+													  Actions
+													</button>
+													<div class="dropdown-menu dropdown-menu-end">
+													  <a class="dropdown-item" href="#">
+														Action
+													  </a>
+													  <a class="dropdown-item" href="#">
+														Another action
+													  </a>
+													</div>
+												  </div>
+												</div>
+												
+											</td>
+										</tr>
+									}
+									
+								</tbody>
+							</table>
+						</div>
+						<div class="card-footer d-flex align-items-center">
+							<p class="m-0 text-muted">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
+							<ul class="pagination m-0 ms-auto">
+								<li class="page-item disabled">
+									<a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+										<!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 6l-6 6l6 6"></path></svg>
+										prev
+									</a>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item active"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">4</a></li>
+								<li class="page-item"><a class="page-link" href="#">5</a></li>
+								<li class="page-item">
+									<a class="page-link" href="#">
+										next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 6l6 6l-6 6"></path></svg>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title">New report</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			
+			<form method="post">
+				<div class="modal-body">
+					<div class="row row-cards">
+						<div class="col-md-4">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.ProjectID"></label>
+								<input asp-for="NewProjectSite.ProjectID"  class="form-control" placeholder="Project ID" />
+							</div>
+						</div>
+							<div class="col-md-8">
+								<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.Customer"></label>
+									<input asp-for="NewProjectSite.Customer" class="form-control" placeholder="Project ID" />
+								</div>
+							</div>
+						<div class="col-md-5">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.PM_Name"></label>
+									<input asp-for="NewProjectSite.PM_Name"  class="form-control" placeholder="PM Name" />
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.PM_Phone"></label>
+								<input asp-for="NewProjectSite.PM_Phone"  class="form-control" placeholder="Phone" />
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.PM_Email"></label>
+									<input asp-for="NewProjectSite.PM_Email" class="form-control" placeholder="Email" />
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.Location"></label>
+									<input asp-for="NewProjectSite.Location"  class="form-control" placeholder="Site Location" />
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-5">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.SiteContact_Name"></label>
+									<input asp-for="NewProjectSite.SiteContact_Name"  class="form-control" placeholder="Name" />
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.SiteContact_Phone"></label>
+									<input asp-for="NewProjectSite.SiteContact_Phone"  class="form-control" placeholder="Phone" />
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.SiteContact_Email"></label>
+									<input asp-for="NewProjectSite.SiteContact_Email"  class="form-control" placeholder="Email" />
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.SurveyDate"></label>
+								
+										<input asp-for="NewProjectSite.SurveyDate" class="form-control" placeholder="Select a date" />
+
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-5">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.Surveyor_Name"></label>
+									<input asp-for="NewProjectSite.Surveyor_Name"  class="form-control" placeholder="Name" />
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="mb-3">
+									<label class="form-label" asp-for="NewProjectSite.Surveyor_Company"></label>
+									<input asp-for="NewProjectSite.Surveyor_Company"  class="form-control" />
+							</div>
+						</div>
+
+							<input type="hidden" asp-for="NewProjectSite.LastModifiedBy" value="@User.Identity.Name" />
+
+						<input type="hidden" asp-for="NewProjectSite.CreatedBy" value="@User.Identity.Name" />
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+						Cancel
+					</a>
+					<input type="submit" class="btn btn-primary ms-auto">
+		
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+}

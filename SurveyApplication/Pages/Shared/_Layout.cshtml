@@ -1,0 +1,320 @@
+﻿<!doctype html>
+<!--
+
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <!-- CSS files -->
+    <link href="~/dist/css/tabler.min.css?1668287865" rel="stylesheet"/>
+
+    <link href="~/dist/css/demo.min.css?1668287865" rel="stylesheet"/>
+    <link href="~/css/custom.css" rel="stylesheet"/>
+    <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/dist/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+
+
+
+    <style>
+      @@import url('https://rsms.me/inter/inter.css');
+      :root {
+      	--tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+      }
+
+      hr {
+        margin: 1rem 0;
+      }
+      .project-info .list-group-header {
+        line-height: normal;
+      }
+
+        input, textarea, select, .form-selectgroup-label, .form-selectgroup-check {
+            border-color: #cecece !important;
+      }
+
+     
+    </style>
+  </head>
+  <body onload="onloadMethod()">
+    <script src="./dist/js/demo-theme.min.js?1668287865"></script>
+    <div class="page">
+        
+      <!-- Navbar -->
+      <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <div class="container-xl">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3" style="padding-right:2.5em !important;">
+            <a asp-page="/Index">
+              <img src="~/images/Colite 2PMS Coated.jpg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+            </a>
+          </h1>
+   
+          <div class="navbar-nav flex-row order-md-last">
+            <partial name="_LoginPartial" />
+            
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-menu">
+            <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
+              @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    Home
+                                </span>
+                            </a>
+                        </li>                
+                    </ul>
+                }
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-wrapper">
+        <!-- Page header -->
+        @RenderBody()
+
+        <footer class="footer footer-transparent d-print-none">
+            <div class="container-xl">
+                <div class="row text-center align-items-center flex-row-reverse">
+                    <div class="col-lg-auto ms-lg-auto">
+                        <ul class="list-inline list-inline-dots mb-0">
+                            <li class="list-inline-item"><a href="./docs/" class="link-secondary">Site Survey Web Application</a></li>
+                            <li class="list-inline-item"><a href="./license.html" class="link-secondary">V 1.0.</a></li>
+                            <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank" class="link-secondary" rel="noopener">Colite International</a></li>
+                           
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                        <ul class="list-inline list-inline-dots mb-0">
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+      </div>
+    
+    <script src="~/dist/libs/dropzone/dist/dropzone-min.js?1674944800" defer=""></script>
+
+    <!-- Tabler Core -->
+    <script src="~/dist/js/tabler.min.js?1668287865" defer></script>
+    <script src="~/dist/js/demo.min.js?1668287865" defer></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+        <script>
+           
+        var rowIds = document.getElementsByClassName("projects-table-row-link");
+        for (let x = 0; x < rowIds.length; x++)
+        {
+            const rowId = rowIds[x];
+            var trows = rowId.getElementsByClassName("proj-column");
+            
+            for (let i = 0; i < trows.length; i++) {
+            const row = trows[i];
+            
+            row.addEventListener("click", () => {
+              window.location.href = `/CreateSiteSurvey/` + rowId.id;
+            
+          }); 
+        }
+        }
+        
+    function openSurvey(surveyNum = "")
+    {
+         var projForm = document.getElementById("project-form");
+
+      
+        if (projForm.style.display != "none")
+        {
+           editProjectSite();
+
+        }
+
+        var forms = document.getElementsByClassName("survey-form");
+        var links = document.getElementsByClassName("survey-link");
+        console.log(forms.length + " " + links.length);
+        
+        for(var i = 0; i < forms.length; i++)
+        {
+            forms[i].style.display = "none";
+            links[i].getElementsByClassName("list-group-item")[0].classList.remove("active");
+        }
+
+        if (surveyNum != "")
+        {
+            var surveyLink = document.getElementById("survey-link-" + surveyNum);
+            var surveyForm = document.getElementById("survey-form-" + surveyNum);
+
+            surveyForm.style.removeProperty("display");
+            surveyLink.classList.add("active");
+        }
+
+        document.getElementById("current-page-number").textContent = surveyNum;
+    }
+
+    function editProjectSite()
+    {
+        /*
+        var form = document.getElementById("edit-project-site");
+        var info = document.getElementById("project-info");
+        if (form.style.display == "none")
+        {
+            form.style.removeProperty("display");
+            info.style.display = "none";
+            return;
+        }
+        form.style.display = "none";
+        info.style.removeProperty("display");
+        */
+
+        var form = document.getElementById("project-form");
+        var info = document.getElementById("project-info");
+      
+        if (form.style.display == "none")
+        {
+         
+            openSurvey();
+            form.style.removeProperty("display");
+            info.classList.add("active");
+            return;
+        }
+        form.style.display = "none";
+        info.classList.remove("active");
+        openSurvey(1);
+
+    }
+
+    function onloadMethod()
+    {
+        openSurvey("1");
+        var saved = document.getElementById("save-success");
+        if (saved != null)
+        {
+           setTimeout(function(){
+                var toast = saved.getElementsByClassName("toast")[0];
+                toast.classList.remove("show");
+           }, 3000);
+        }
+    }
+
+
+    function closeSuccessModal()
+    {
+        var mod = document.getElementById("modal-success");
+        mod.classList.remove("show");
+        mod.style.removeProperty("display");
+    }
+
+
+    function saveSurvey()
+    {
+      document.getElementById("save-survey-post").submit();
+    }
+
+
+    function setCurrentSite(i, surveyNum)
+    {
+               
+
+                var t = document.getElementById("image-upload-title");
+                t.innerHTML = "";
+                t.innerHTML ="Image Upload - Location " + surveyNum
+
+                var input = document.getElementById("upload-photos-surveynumber").value = i;
+           
+
+    }
+</script>
+        <script src="~/dist/libs/list.js/dist/list.js"></script>
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <script>
+          
+
+            var options = {
+                valueNames: ['sort-project', 'sort-customer', 'sort-pm', 'sort-siteContact',
+                        { attr: 'data-date', name: 'sort-dateCreated' } ],
+                        pages: 20,
+                        pagination: true
+                        
+            };
+            
+            var userList = new List('table-projects', options);
+            /*
+            function updateProjectTable(num, total)
+            {
+                var p = (total / num) + 1;
+                var options = {
+                    valueNames: ['sort-project', 'sort-customer', 'sort-pm', 'sort-siteContact',
+                        { attr: 'data-date', name: 'sort-dateCreated' }],
+                        page: p,
+                    pagination: true
+                };
+
+                var userList = new List('table-projects', options);
+                
+
+            }*/
+
+               
+
+        </script>
+
+
+
+
+        <script>
+            function myParamName() {
+                return "DocumentPhotos";
+            }
+            Dropzone.options.dropzoneCustom = {
+               autoProcessQueue: false,
+                    addRemoveLinks: true,
+                previewsContainer: ".dropzone-previews",
+                 createImageThumbnails: true,
+            paramName: myParamName, // The name that will be used to transfer the file
+            uploadMultiple: true,
+            parallelUploads: 100,
+            init: function () {
+                console.log("active");
+                var wrapperThis = this;
+                document.getElementById("submit-photos").addEventListener("click", function(e)
+                {
+                    e.preventDefault();
+                    wrapperThis.processQueue();
+                });
+               
+            },
+            success: function (file, done) {
+                    var pid = document.getElementById("project-site-id").innerHTML;
+                    window.location.replace("./" + pid);
+            
+            }
+        };
+
+
+        </script>
+  
+
+
+        <input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
+
+
+</body>
+</html>

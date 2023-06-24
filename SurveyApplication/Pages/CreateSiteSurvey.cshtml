@@ -1,0 +1,785 @@
+﻿@page "{id}"
+@model SurveyApplication.Pages.CreateSiteSurveyModel
+@{
+    ViewData["Title"] = "Create Site Survey";
+}
+
+<div style="display:none" id="current-form">@Model.CurrentForm</div>
+
+@if (Model.SaveConfirmation)
+{
+
+    <div style="position:relative;" id="save-success">
+        <div class="toast bg-success-lt show" style="position: absolute; top: 0; right: 35%;margin-top:1.5rem;">
+            <div class="toast-header bg-success-lt">
+
+                <strong class="mr-auto">Save Successful!</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+}
+<form method="post" asp-route-id="@Model.Id" enctype="multipart/form-data">
+    <!-- Page header -->
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="row g-2 align-items-center">
+                <div class="col">
+                    <!-- Page pre-title -->
+                    <div class="page-pretitle">
+                        Site Survey Application
+                    </div>
+                    <h2 class="page-title">
+                        Site Survey Editor
+                    </h2>
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-page="/Index">Project Sites</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" id="project-site-id">@Model.ProjectSite.ProjectID</li>
+                      </ol>
+                    </nav>
+                </div>
+
+                <!-- Page title actions -->
+                <div class="col-auto ms-auto d-print-none">
+                    <div class="btn-list">
+
+                        <span class=" d-sm-inline">
+
+                            <button type="submit" id="submit-all" class="btn btn-secondary">
+                                Save
+                            </button>
+                        </span>
+
+
+                        <a href="#" class="btn btn-primary d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+                            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M9 11l3 3l8 -8"></path>
+                                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
+                            </svg>                   Submit Survey
+                        </a>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page body -->
+    <div class="page-body">
+        <div class="container-xl">
+            <div class="row g-4">
+                <div class="col-sm-12 col-md-12 col-lg-3">
+                    
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-12">
+                            <div class="card mb-3 project-info" style="background-color:rgba(240, 248, 255, 0);">
+                                <div class="list-group-header" style="padding:0.5rem 1.0rem">
+                                    <div class="d-flex justify-content-between" style="align-items: center !important;">
+                                        <div>
+                                            Project Info
+                                        </div>
+                                        <a href="#" onclick="editProjectSite()" style="font-size: 12px;">
+                                            <div class="d-flex" style="align-items: center !important;">
+                                                <text style="padding-right:10px;">Edit Info</text>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" style="margin-right:0 !important;" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                                    <path d="M16 5l3 3"></path>
+                                                </svg>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="list-group list-group-flush overflow-auto transparent" id="project-site-list-group">
+                                    <a href="#" class="project-link" onclick="editProjectSite()">
+                                        <div class="list-group-item" id="project-info">
+                                            <div class="mb-2">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/book -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path><path d="M3 6l0 13"></path><path d="M12 6l0 13"></path><path d="M21 6l0 13"></path></svg>
+                                                Project ID: <strong>@Model.ProjectSite.ProjectID</strong>
+                                            </div>
+                                            <div class="mb-2">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/briefcase -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path><path d="M12 12l0 .01"></path><path d="M3 13a20 20 0 0 0 18 0"></path></svg>
+                                                PM: <strong>@Model.ProjectSite.PM_Name</strong>
+                                            </div>
+                                            <div class="mb-2">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg>
+                                                Location: <span class="flag flag-country-us"></span>
+                                                <strong>@Model.ProjectSite.Location</strong>
+                                            </div>
+                                            <div class="mb-2">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/map-pin -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 11m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path></svg>
+                                                Contact: <strong>@Model.ProjectSite.SiteContact_Name</strong>
+                                            </div>
+                                            <div class="mb-2">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M11 15l1 0"></path><path d="M12 15l0 3"></path></svg>
+                                                Survey Date: <strong>
+                                                    @if (Model.ProjectSite.SurveyDate != null)
+                                                    {
+                                                        @Model.ProjectSite.SurveyDate.Value.ToShortDateString()
+                                                    }
+                                                </strong>
+                                            </div>
+                                            <!--
+                                                   <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path d="M12 7l0 5l3 3"></path></svg>
+                                                Survey Company: <strong>@Model.ProjectSite.Surveyor_Company</strong>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    
+                        <div class="col-sm-12 col-md-6 col-lg-12">
+                            <div class="card site-doc-list mb-3">
+
+                                <div class="list-group-header" style="padding:0.5rem 1.0rem;">
+                                    <div class="d-flex justify-content-between" style="align-items: center !important;">
+                                        <div>
+                                            Survey Page
+                                        </div>
+                                        <div>
+                                            <span id="current-page-number"></span> of @Model.ProjectSite.Surveys.Count
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group list-group-flush overflow-auto transparent" id="survey-list-group">
+                                    @for (int i = 0; i < Model.ProjectSite.Surveys.Count; i++)
+                                    {
+                                        <a href="#" class="survey-link" onclick="openSurvey(@Model.ProjectSite.Surveys[i].SurveyNumber)">
+                                            <div class="list-group-item" id="survey-link-@Model.ProjectSite.Surveys[i].SurveyNumber">
+                                                <div class="row">
+                                                    <div class="col-auto">
+                                                        <span>
+
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-description link-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                                                <path d="M9 17h6"></path>
+                                                                <path d="M9 13h6"></path>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col text-wrap">
+                                                        <div class="text-body d-block">Site Survey - Location  #@Model.ProjectSite.Surveys[i].SurveyNumber</div>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </a>
+
+                                    }
+
+
+                                </div>
+                            </div>
+
+                            <div class="mt-3">
+                                <a class="btn btn-primary" asp-page-handler="AddSurvey" asp-route-id="@Model.Id" style="font-size:.8rem;">
+                                    Add New Page
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                </div>
+                
+                <div class="col-md-12 col-lg-9">
+                   
+                    <div class="row row-deck row-cards" id="project-form" style="display:none;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Project Site</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row row-cards">
+                                       
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="card-title">Project Information</div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.ProjectID"></label>
+                                                            <input asp-for="ProjectSite.ProjectID" class="form-control" placeholder="Project ID" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+
+                                                            <label class="form-label subheader" asp-for="ProjectSite.Customer"></label>
+                                                            <input asp-for="ProjectSite.Customer" class="form-control" placeholder="Name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.QuoteNum"></label>
+                                                            <input asp-for="ProjectSite.QuoteNum" class="form-control" placeholder="Quote Number" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.OrderNum"></label>
+                                                            <input asp-for="ProjectSite.OrderNum" class="form-control" placeholder="Order Number" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label subheader" asp-for="ProjectSite.Location"></label>
+                                                        <input asp-for="ProjectSite.Location" class="form-control" placeholder="Site Location" />
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="card-title">Project Manager Contact Info</div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.PM_Name"></label>
+                                                            <input asp-for="ProjectSite.PM_Name" class="form-control" placeholder="Name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.PM_Phone"></label>
+                                                            <input asp-for="ProjectSite.PM_Phone" class="form-control" placeholder="Phone" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.PM_Email"></label>
+                                                            <input asp-for="ProjectSite.PM_Email" class="form-control" placeholder="Email" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="card-title">Site Contact Info</div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-5">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.SiteContact_Name"></label>
+                                                            <input asp-for="ProjectSite.SiteContact_Name" class="form-control" placeholder="Name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.SiteContact_Phone"></label>
+                                                            <input asp-for="ProjectSite.SiteContact_Phone" class="form-control" placeholder="Phone" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.SiteContact_Email"></label>
+                                                            <input asp-for="ProjectSite.SiteContact_Email" class="form-control" placeholder="Email" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="card-title">Survey Information</div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-3">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.SurveyDate"></label>
+
+                                                            <input asp-for="ProjectSite.SurveyDate" class="form-control" placeholder="Select a date" />
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-5">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.Surveyor_Name"></label>
+                                                            <input asp-for="ProjectSite.Surveyor_Name" class="form-control" placeholder="Name" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <div class="mb-3">
+                                                            <label class="form-label subheader" asp-for="ProjectSite.Surveyor_Company"></label>
+                                                            <input asp-for="ProjectSite.Surveyor_Company" class="form-control" placeholder="Company" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                </div>
+                                                   
+                            </div>
+                            <div class="card-footer">
+
+                                <input type="hidden" asp-for="ProjectSite.LastModified" value="@DateTime.Now" />
+                                <input type="hidden" asp-for="ProjectSite.LastModifiedBy" value="@User.Identity.Name" />
+                                <input type="hidden" asp-for="ProjectSite.Id" />
+
+                                <input type="submit" class="btn btn-primary ms-auto" value="Save">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    @for (int i = 0; i < Model.SiteSurveys.Count; i++)
+                    {
+                        <div class="row row-deck row-cards survey-form" id="survey-form-@Model.SiteSurveys[i].SurveyNumber">
+                            <div class="card site-doc-form">
+                                <div class="card-header">
+                                    <h3 class="card-title">Location #@Model.SiteSurveys[i].SurveyNumber</h3>
+                                    
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="row mb-2">
+                                        <div class="col-md-12">
+                                            <div class="card">
+
+                                                <div class="card-body">
+                                                    <div class="card-title">Sign Details</div>
+                                                    <div class="row">
+
+                                                        <input type="hidden" asp-for="SiteSurveys[i].Id" />
+                                                        <input type="hidden" asp-for="SiteSurveys[i].ProjectSiteId" />
+                                                        <input type="hidden" asp-for="SiteSurveys[i].ProjectSite" />
+                                                        <input type="hidden" asp-for="SiteSurveys[i].SurveyNumber" />
+                                                        <input type="hidden" asp-for="SiteSurveys[i].CreatedBy" value="@User.Identity.Name" />
+                                                        <input type="hidden" asp-for="SiteSurveys[i].LastModifiedBy" value="@User.Identity.Name" />
+                                                        <input type="hidden" asp-for="SiteSurveys[i].LastModified" value="@DateTime.Now" />
+
+                                                        <div class="col-sm-12 col-md-8">
+                                                            <div class="mb-3">
+                                                                <div class="subheader mb-1">Sign Type</div>
+
+                                                                <div>
+                                                                    <select class="form-select" asp-for="SiteSurveys[i].SignType">
+                                                                        <option value="Monument"></option>
+                                                                        <option value="Pylon">Pylon</option>
+                                                                        <option value="Monolith">Monolith</option>
+                                                                        <option value="High Rise">High Rise</option>
+                                                                        <option value="Directional">Directional</option>
+                                                                        <option value="Post & Panel">Post & Panel</option>
+                                                                        <option value="Wall Panel">Wall Panel</option>
+                                                                        <option value="Flat Panel">Flat Panel</option>
+                                                                        <option value="Letterset">Letterset</option>
+                                                                        <option value="Blade Sign">Blade Sign</option>
+                                                                        <option value="Vinyls">Vinyls</option>
+                                                                        <option value="Other">Other</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-4">
+                                                            <div class="mb-3">
+                                                                <div class="subheader mb-1">Number of Signs</div>
+                                                                <input type="text" class="form-control" asp-for="SiteSurveys[i].SignQuantity" />
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="mb-3">
+                                                                <div class="subheader mb-1">Lighting</div>
+
+                                                                <div class="form-selectgroup form-selectgroup-boxes d-flex flex-row">
+                                                                    <label class="form-selectgroup-item flex-fill">
+                                                                        <input type="radio" asp-for="SiteSurveys[i].Lightining" value="Illuminated" class="form-selectgroup-input" checked="" />
+                                                                        <div class="form-selectgroup-label d-flex align-items-center p-3">
+                                                                            <div class="me-3">
+                                                                                <span class="form-selectgroup-check"></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                Illuminated
+                                                                            </div>
+                                                                        </div>
+                                                                    </label>
+                                                                    <label class="form-selectgroup-item flex-fill">
+                                                                        <input type="radio" asp-for="SiteSurveys[i].Lightining" value="Non-Illuminated" class="form-selectgroup-input" />
+                                                                        <div class="form-selectgroup-label d-flex align-items-center p-3">
+                                                                            <div class="me-3">
+                                                                                <span class="form-selectgroup-check"></span>
+                                                                            </div>
+                                                                            Non-Illuminated
+                                                                        </div>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="mb-3">
+                                                                <div class="subheader mb-1">Sign Details</div>
+
+                                                                <div class="form-selectgroup form-selectgroup-boxes d-flex flex-row">
+                                                                    <label class="form-selectgroup-item flex-fill">
+                                                                        <input type="radio" asp-for="SiteSurveys[i].Faces" value="Singed-Faced" class="form-selectgroup-input" checked="" />
+                                                                        <div class="form-selectgroup-label d-flex align-items-center p-3">
+                                                                            <div class="me-3">
+                                                                                <span class="form-selectgroup-check"></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                Single-Faced
+                                                                            </div>
+                                                                        </div>
+                                                                    </label>
+                                                                    <label class="form-selectgroup-item flex-fill">
+                                                                        <input type="radio" asp-for="SiteSurveys[i].Faces" value="Double-Faced" class="form-selectgroup-input" />
+                                                                        <div class="form-selectgroup-label d-flex align-items-center p-3">
+                                                                            <div class="me-3">
+                                                                                <span class="form-selectgroup-check"></span>
+                                                                            </div>
+                                                                            Double-Faced
+                                                                        </div>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-title">Measurments & Dimensionions</div>
+                                                    <div class="mb-3">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="subheader mb-1">Height</div>
+                                                                <input type="text" asp-for="SiteSurveys[i].Height" class="form-control" placeholder="" />
+
+                                                            </div>
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="subheader mb-1">Width</div>
+                                                                <input type="text" asp-for="SiteSurveys[i].Width" class="form-control" placeholder="" />
+
+                                                            </div>
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="subheader mb-1">Depth</div>
+                                                                <input type="text" asp-for="SiteSurveys[i].Depth" class="form-control" placeholder="" />
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-md-6">
+                                                                <div class="subheader mb-1">Height from Grade</div>
+                                                                <input type="text" asp-for="SiteSurveys[i].Height_FromGrade" class="form-control" placeholder="" />
+
+                                                            </div>
+                                                            <div class="col-sm-12 col-md-6">
+                                                                <div class="subheader mb-1">Available Area Height & Width</div>
+                                                                <input type="text" asp-for="SiteSurveys[i].AvaiableArea" class="form-control" placeholder="" />
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <div class="col-12">
+                                                            <div class="subheader mb-1">Voltage or N/A</div>
+                                                            <input type="text" asp-for="SiteSurveys[i].Voltage" class="form-control" placeholder="" />
+                                                        </div>
+                                                    </div>
+                                                       
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="subheader mb-1">Wall Color</div>
+                                                            <input type="text" asp-for="SiteSurveys[i].WallColor" class="form-control" placeholder="" />
+
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <div class="subheader mb-1">Wall Height</div>
+                                                            <input type="text" asp-for="SiteSurveys[i].WallHeight" class="form-control" placeholder="" /> 
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <div class="col-12">
+                                                            <div class="subheader mb-1">Mounting Details</div>
+                                                        <input type="text" asp-for="SiteSurveys[i].MountingDetails" class="form-control" placeholder="" />
+
+                                                        </div>
+                                                        
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row mb-2">
+                                        <div class="col-12">
+                                            <div class="card" style="border:none;">
+                                                <div class="card-body" style="padding-left:0;padding-right:0;">
+
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3 mb-0">
+                                                            <div class="mb-2">
+                                                                If a ground sign, Would you reccomed reusing exisiting footing?
+                                                                <strong>
+                                                                    If yes, please list the
+                                                                    details and exisitng bolt pattern on the final page. Be sure to take photos and measurments of the match plates.
+                                                                </strong>
+                                                            </div>
+
+
+                                                            <div>
+                                                                <label class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" asp-for="SiteSurveys[i].ResuseFooting" value="true" checked="" />
+                                                                    <span class="form-check-label">Yes</span>
+                                                                </label>
+                                                                <label class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" asp-for="SiteSurveys[i].ResuseFooting" value="false" />
+                                                                    <span class="form-check-label">No</span>
+                                                                </label>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-title">Site Photos</div>
+                                                    <div class="col-12 mb-3">
+
+                                                        <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal-upload-images" onclick="setCurrentSite(@Model.SiteSurveys[i].Id, @Model.SiteSurveys[i].SurveyNumber)">
+                                                            Upload Site Photos
+                                                        </a>
+                                                        <div class="d-flex" style="justify-content:flex-start;flex-wrap:wrap;padding-top:1.5rem;gap:10px 10px;">
+                                                            @foreach (var str in Model.SurveyImages)
+                                                            {
+                                                                @if (str.SurveyId == Model.SiteSurveys[i].Id)
+                                                                {
+                                                                    
+                                                                    string fileName =  Model.SiteSurveys[i].Id.ToString() + str.Name.Substring(0, str.Name.LastIndexOf("."));
+                                                                    
+
+                                                                    <div class="card">
+                                                                       
+                                                                            <img src="@str.FilePath" alt="" style="width:9rem;height:8rem;">
+                                                                           
+                                                                
+                                                                        <div class="card-body p-2" style="background-color:#f8fafc;">
+                                                                            <div class="row">
+                                                                              <div class="col-6">
+                                                                                    <div class="text-muted text-truncate">
+                                                                                        @str.Name
+                                                                                    </div>
+                                                                              </div>
+                                                                              <div class="col-6">
+                                                                                  <div class="d-flex justify-content-between">
+                                                                                     <a class="site-image-downlaod" asp-page-handler="DownloadFile"  asp-route-file="@str.FilePath">
+
+
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                                                                                        <path d="M7 11l5 5l5 -5"></path>
+                                                                                        <path d="M12 4l0 12"></path>
+                                                                                    </svg>
+
+                                                                                </a>
+
+                                                                                        <a class="site-image-delete" href="#" data-bs-toggle="modal" data-bs-target="#modal-delete-image-@fileName">
+
+
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                                        <path d="M4 7l16 0"></path>
+                                                                                        <path d="M10 11l0 6"></path>
+                                                                                        <path d="M14 11l0 6"></path>
+                                                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                                                                    </svg>
+
+                                                                                </a>
+                                                                                  </div>
+                                                                              </div>
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal modal-blur fade" id="modal-delete-image-@fileName" tabindex="-1" role="dialog" aria-modal="true" style=" padding-left: 0px;">
+                                                                        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                                                                            <div class="modal-content">
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                <div class="modal-status bg-danger"></div>
+                                                                                <div class="modal-body text-center py-4">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 9v2m0 4v.01"></path><path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75"></path></svg>
+                                                                                    <h3>Are you sure?</h3>
+                                                                                    <div class="text-muted">Are you sure you want to remove this photo?</div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <div class="w-100">
+                                                                                        <div class="row">
+                                                                                            <div class="col">
+                                                                                                <a href="#" class="btn w-100" data-bs-dismiss="modal">
+                                                                                                    Cancel
+                                                                                                </a>
+                                                                                            </div>
+                                                                                            <div class="col">
+                                                                                                <a class="btn btn-danger w-100" asp-page-handler="DeleteFile"  asp-route-file="@str.FilePath">
+                                                                                                    Delete
+                                                                                                </a>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }                                                            
+                                                                
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                     
+                                                    <div class="card-title">Notes</div>
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+
+                                                            <textarea rows="5" asp-for="SiteSurveys[i].Notes" class="form-control" placeholder="Enter any notes here..."></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex">
+                                        <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete-survey-@Model.SiteSurveys[i].Id">
+                                            Delete Survey
+                                        </a>
+                                        <input type="submit" class="btn btn-primary ms-auto" value="Save">
+                                    </div>
+                                  </div>
+
+                                
+                            </div>
+                        </div>
+                        <div class="modal modal-blur fade" id="modal-delete-survey-@Model.SiteSurveys[i].Id" tabindex="-1" role="dialog" aria-modal="true" style=" padding-left: 0px;">
+                            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="modal-status bg-danger"></div>
+                                    <div class="modal-body text-center py-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 9v2m0 4v.01"></path><path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75"></path></svg>
+                                        <h3>Are you sure?</h3>
+                                        <div class="text-muted">Are you sure you want to remove this site document?</div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="w-100">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <a href="#" class="btn w-100" data-bs-dismiss="modal">
+                                                        Cancel
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <a class="btn btn-danger w-100" asp-page-handler="DeleteSiteSurvey" asp-route-surveyId="@Model.SiteSurveys[i].Id">
+                                                        Delete Page
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <br />
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
+
+<div class="modal modal-blur fade" id="modal-upload-images" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="image-upload-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                        <form method="post" class="dropzone dz-clickable" id="dropzoneCustom" asp-page-handler="UploadPhotos" autocomplete="off" novalidate="">
+
+                        <div class="dropzone-previews">
+                            <div class="dz-message" style="margin:0 0;padding: 3rem;">
+                                <h3 class="dropzone-msg-title">Upload Survey Photos</h3>
+                                <span class="dropzone-msg-desc">Click here to select images to upload</span>
+
+                            </div>
+                            <input type="hidden" id="upload-photos-surveynumber" value="1" name="SurveyID">
+                        </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+                <button type="submit" id="submit-photos" class="btn btn-primary">Upload</button>
+            </div>
+                                    
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
