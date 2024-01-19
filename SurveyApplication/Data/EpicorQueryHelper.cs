@@ -8,7 +8,7 @@ namespace SurveyApplication.Data
 {
 	public class EpicorQueryHelper
 	{
-		private static string connStr = "Data Source=EPCR-SQL;Initial Catalog=EpicorTestERP10;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+		private static string connStr = "";
 
 		public static async Task<ProjectSite> ExecuteQueryAsync_GetProjectData(ProjectSite projectSite)
 		{
