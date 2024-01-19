@@ -202,7 +202,7 @@ namespace SurveyApplication.Pages
 		{
 			string surveyId = "Site-" + SurveyID;
 			string id = Id;
-			string path = @"C:\Users\halford\source\repos\SurveyApplication\SurveyApplication\wwwroot\upload\" + id + "\\" + surveyId;  // Give the specific path  
+			string path = @"C:" + id + "\\" + surveyId;  // Give the specific path  
 			if (!(Directory.Exists(path)))
 			{
 				Directory.CreateDirectory(path);
