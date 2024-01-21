@@ -252,3 +252,39 @@
 		</div>
 	</div>
 }
+
+@section scripts {
+
+	<script>
+		// Sets the table rows up to open the select row's sitie survey in the editor
+		var rowIds = document.getElementsByClassName("projects-table-row-link");
+		for (let x = 0; x < rowIds.length; x++)
+		{
+			const rowId = rowIds[x];
+			var trows = rowId.getElementsByClassName("proj-column");
+
+			for (let i = 0; i < trows.length; i++) {
+				const row = trows[i];
+
+				row.addEventListener("click", () => {
+					window.location.href = `/CreateSiteSurvey/` + rowId.id;
+
+				}); 
+			}
+		}
+
+		// Configures table column sorting
+		var options = {
+			valueNames: ['sort-project', 'sort-customer', 'sort-pm', 'sort-siteContact',
+				{ attr: 'data-date', name: 'sort-dateCreated' }],
+			pages: 20,
+			pagination: true
+
+		};
+
+		var userList = new List('table-projects', options);
+
+
+	</script>
+
+}

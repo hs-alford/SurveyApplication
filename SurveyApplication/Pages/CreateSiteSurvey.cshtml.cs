@@ -71,7 +71,6 @@ namespace SurveyApplication.Pages
 
 			// Getting list of site numbers to retrive each site's photos
 			List<int> siteIds = sites.Select(u => u.Id).ToList();
-			//siteNums.Sort();
 			OnGetListFolderContents(id, siteIds);
 		}
 
@@ -83,7 +82,6 @@ namespace SurveyApplication.Pages
 		public async Task<IActionResult> OnGetAddSurvey(string? id)
 		{
 			Id = id;
-			Console.WriteLine("ID:" + Id);
 			ProjectSite = _context.ProjectSites.Include(u => u.Surveys).ToList().Where(u => u.ProjectID == Id).FirstOrDefault();
 			List<SiteSurvey> surveys = ProjectSite.Surveys;
 			for (int i = 0, x = 1; i < surveys.Count; i++, x++)
@@ -107,14 +105,9 @@ namespace SurveyApplication.Pages
 			Id= id;
 
 			var errors = ModelState.Values.SelectMany(x => x.Errors.Select(c => c.ErrorMessage)).ToList();
-			foreach (var error in errors) { 
-				Console.WriteLine($"Error: {error}");
-			}
 
 			if (!ModelState.IsValid)
 			{
-				Console.WriteLine("Model State: false");
-
 				return Page();
 			}
 
@@ -202,7 +195,7 @@ namespace SurveyApplication.Pages
 		{
 			string surveyId = "Site-" + SurveyID;
 			string id = Id;
-			string path = @"C:" + id + "\\" + surveyId;  // Give the specific path  
+			string path = @"C:\{Your path goes here}" + id + "\\" + surveyId;  // Give the specific path  
 			if (!(Directory.Exists(path)))
 			{
 				Directory.CreateDirectory(path);
@@ -214,7 +207,6 @@ namespace SurveyApplication.Pages
 				//get uploaded file name: true to create temp name, false to get real name
 				var fileName = file.TempFileName(false);
 				var fileExt = fileName.Substring(fileName.LastIndexOf('.'));
-				//_logger.LogInformation("File extension : " + fileExt);
 				if (file.Length > 0)
 				{
 					// optional : server side resize create image with watermark

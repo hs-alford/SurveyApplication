@@ -21,7 +21,7 @@
 
     </div>
 }
-<form method="post" asp-route-id="@Model.Id" enctype="multipart/form-data">
+<form method="post" asp-route-id="@Model.Id" enctype="multipart/form-data" onload="onloadMethod()">
     <!-- Page header -->
     <div class="page-header d-print-none">
         <div class="container-xl">
@@ -131,12 +131,7 @@
                                                     }
                                                 </strong>
                                             </div>
-                                            <!--
-                                                   <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path d="M12 7l0 5l3 3"></path></svg>
-                                                Survey Company: <strong>@Model.ProjectSite.Surveyor_Company</strong>
-                                            </div>
-                                            -->
+                   
                                         </div>
                                     </a>
                                 </div>
@@ -774,6 +769,150 @@
 
     </div>
 </div>
+
+
+@section scripts {
+
+    <script src="~/dist/libs/dropzone/dist/dropzone-min.js?1674944800" defer=""></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
+    <script>
+
+        // Triggers when site survey editor form is opened, set to open first site survey by default. Also checks for update.
+        function onloadMethod()
+        {
+            openSurvey("1");
+            var saved = document.getElementById("save-success");
+            if (saved != null)
+            {
+               setTimeout(function(){
+                    var toast = saved.getElementsByClassName("toast")[0];
+                    toast.classList.remove("show");
+               }, 3000);
+            }
+        }
+
+        // Opens the site survy number passed to the function, sets the proper 'id' properites and active states 
+        function openSurvey(surveyNum = "")
+        {
+             var projForm = document.getElementById("project-form");
+
+      
+            if (projForm.style.display != "none")
+            {
+               editProjectSite();
+
+            }
+
+            var forms = document.getElementsByClassName("survey-form");
+            var links = document.getElementsByClassName("survey-link");
+            console.log(forms.length + " " + links.length);
+        
+            for(var i = 0; i < forms.length; i++)
+            {
+                forms[i].style.display = "none";
+                links[i].getElementsByClassName("list-group-item")[0].classList.remove("active");
+            }
+
+            if (surveyNum != "")
+            {
+                var surveyLink = document.getElementById("survey-link-" + surveyNum);
+                var surveyForm = document.getElementById("survey-form-" + surveyNum);
+
+                surveyForm.style.removeProperty("display");
+                surveyLink.classList.add("active");
+            }
+
+            document.getElementById("current-page-number").textContent = surveyNum;
+        }
+
+        // When an image is uploaded via the dropbox, the site id is attached to it.
+        function setCurrentSite(i, surveyNum) {
+            var t = document.getElementById("image-upload-title");
+            t.innerHTML = "";
+            t.innerHTML = "Image Upload - Location " + surveyNum
+
+            var input = document.getElementById("upload-photos-surveynumber").value = i;
+
+        }
+
+
+        // Displays the project site information form.
+        function editProjectSite()
+        {
+            var form = document.getElementById("project-form");
+            var info = document.getElementById("project-info");
+      
+            if (form.style.display == "none")
+            {
+         
+                openSurvey();
+                form.style.removeProperty("display");
+                info.classList.add("active");
+                return;
+            }
+            form.style.display = "none";
+            info.classList.remove("active");
+            openSurvey(1);
+
+        }
+
+        function saveSurvey() {
+            document.getElementById("save-survey-post").submit();
+        }
+
+        
+        function closeSuccessModal()
+        {
+            var mod = document.getElementById("modal-success");
+            mod.classList.remove("show");
+            mod.style.removeProperty("display");
+        }
+
+    </script>
+        
+  
+
+    <script>
+
+        // Initalizes and configures the dropzone image uploader
+        function myParamName() {
+            return "DocumentPhotos";
+        }
+
+        Dropzone.options.dropzoneCustom = {
+            autoProcessQueue: false,
+                addRemoveLinks: true,
+            previewsContainer: ".dropzone-previews",
+                createImageThumbnails: true,
+            paramName: myParamName, // The name that will be used to transfer the file
+            uploadMultiple: true,
+            parallelUploads: 100,
+            init: function () {
+                console.log("active");
+                var wrapperThis = this;
+                document.getElementById("submit-photos").addEventListener("click", function(e)
+                {
+                    e.preventDefault();
+                    wrapperThis.processQueue();
+                });
+               
+        },
+        success: function (file, done) {
+            var pid = document.getElementById("project-site-id").innerHTML;
+            window.location.replace("./" + pid);
+            
+        }
+
+        };
+
+
+    </script>
+  
+
+    <input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
+
+}
 
 
 

@@ -1,10 +1,16 @@
 ﻿<!doctype html>
+<!--
+
+
+
+
+-->
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Colite - Site Survey Application</title>
+    <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <!-- CSS files -->
     <link href="~/dist/css/tabler.min.css?1668287865" rel="stylesheet"/>
 
@@ -35,7 +41,7 @@
      
     </style>
   </head>
-  <body onload="onloadMethod()">
+  <body>
     <script src="./dist/js/demo-theme.min.js?1668287865"></script>
     <div class="page">
         
@@ -102,213 +108,15 @@
             </div>
         </footer>
       </div>
-    
-    <script src="~/dist/libs/dropzone/dist/dropzone-min.js?1674944800" defer=""></script>
 
-    <!-- Tabler Core -->
-    <script src="~/dist/js/tabler.min.js?1668287865" defer></script>
-    <script src="~/dist/js/demo.min.js?1668287865" defer></script>
+        <script src="~/dist/libs/list.js/dist/list.js"></script>
+
+        <!-- Tabler Core -->
+        <script src="~/dist/js/tabler.min.js?1668287865" defer></script>
+        <script src="~/dist/js/demo.min.js?1668287865" defer></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
-
-        <script>
-           
-        var rowIds = document.getElementsByClassName("projects-table-row-link");
-        for (let x = 0; x < rowIds.length; x++)
-        {
-            const rowId = rowIds[x];
-            var trows = rowId.getElementsByClassName("proj-column");
-            
-            for (let i = 0; i < trows.length; i++) {
-            const row = trows[i];
-            
-            row.addEventListener("click", () => {
-              window.location.href = `/CreateSiteSurvey/` + rowId.id;
-            
-          }); 
-        }
-        }
         
-    function openSurvey(surveyNum = "")
-    {
-         var projForm = document.getElementById("project-form");
-
-      
-        if (projForm.style.display != "none")
-        {
-           editProjectSite();
-
-        }
-
-        var forms = document.getElementsByClassName("survey-form");
-        var links = document.getElementsByClassName("survey-link");
-        console.log(forms.length + " " + links.length);
-        
-        for(var i = 0; i < forms.length; i++)
-        {
-            forms[i].style.display = "none";
-            links[i].getElementsByClassName("list-group-item")[0].classList.remove("active");
-        }
-
-        if (surveyNum != "")
-        {
-            var surveyLink = document.getElementById("survey-link-" + surveyNum);
-            var surveyForm = document.getElementById("survey-form-" + surveyNum);
-
-            surveyForm.style.removeProperty("display");
-            surveyLink.classList.add("active");
-        }
-
-        document.getElementById("current-page-number").textContent = surveyNum;
-    }
-
-    function editProjectSite()
-    {
-        /*
-        var form = document.getElementById("edit-project-site");
-        var info = document.getElementById("project-info");
-        if (form.style.display == "none")
-        {
-            form.style.removeProperty("display");
-            info.style.display = "none";
-            return;
-        }
-        form.style.display = "none";
-        info.style.removeProperty("display");
-        */
-
-        var form = document.getElementById("project-form");
-        var info = document.getElementById("project-info");
-      
-        if (form.style.display == "none")
-        {
-         
-            openSurvey();
-            form.style.removeProperty("display");
-            info.classList.add("active");
-            return;
-        }
-        form.style.display = "none";
-        info.classList.remove("active");
-        openSurvey(1);
-
-    }
-
-    function onloadMethod()
-    {
-        openSurvey("1");
-        var saved = document.getElementById("save-success");
-        if (saved != null)
-        {
-           setTimeout(function(){
-                var toast = saved.getElementsByClassName("toast")[0];
-                toast.classList.remove("show");
-           }, 3000);
-        }
-    }
-
-
-    function closeSuccessModal()
-    {
-        var mod = document.getElementById("modal-success");
-        mod.classList.remove("show");
-        mod.style.removeProperty("display");
-    }
-
-
-    function saveSurvey()
-    {
-      document.getElementById("save-survey-post").submit();
-    }
-
-
-    function setCurrentSite(i, surveyNum)
-    {
-               
-
-                var t = document.getElementById("image-upload-title");
-                t.innerHTML = "";
-                t.innerHTML ="Image Upload - Location " + surveyNum
-
-                var input = document.getElementById("upload-photos-surveynumber").value = i;
-           
-
-    }
-</script>
-        <script src="~/dist/libs/list.js/dist/list.js"></script>
-        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-        <script>
-          
-
-            var options = {
-                valueNames: ['sort-project', 'sort-customer', 'sort-pm', 'sort-siteContact',
-                        { attr: 'data-date', name: 'sort-dateCreated' } ],
-                        pages: 20,
-                        pagination: true
-                        
-            };
-            
-            var userList = new List('table-projects', options);
-            /*
-            function updateProjectTable(num, total)
-            {
-                var p = (total / num) + 1;
-                var options = {
-                    valueNames: ['sort-project', 'sort-customer', 'sort-pm', 'sort-siteContact',
-                        { attr: 'data-date', name: 'sort-dateCreated' }],
-                        page: p,
-                    pagination: true
-                };
-
-                var userList = new List('table-projects', options);
-                
-
-            }*/
-
-               
-
-        </script>
-
-
-
-
-        <script>
-            function myParamName() {
-                return "DocumentPhotos";
-            }
-            Dropzone.options.dropzoneCustom = {
-               autoProcessQueue: false,
-                    addRemoveLinks: true,
-                previewsContainer: ".dropzone-previews",
-                 createImageThumbnails: true,
-            paramName: myParamName, // The name that will be used to transfer the file
-            uploadMultiple: true,
-            parallelUploads: 100,
-            init: function () {
-                console.log("active");
-                var wrapperThis = this;
-                document.getElementById("submit-photos").addEventListener("click", function(e)
-                {
-                    e.preventDefault();
-                    wrapperThis.processQueue();
-                });
-               
-            },
-            success: function (file, done) {
-                    var pid = document.getElementById("project-site-id").innerHTML;
-                    window.location.replace("./" + pid);
-            
-            }
-        };
-
-
-        </script>
-  
-
-
-        <input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
-
-
+        @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
