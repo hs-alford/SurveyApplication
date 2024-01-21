@@ -14,4 +14,5 @@
 * HTML
 * CSS
 * Bootstrap
+* Tabler.io
 * Dropzone
